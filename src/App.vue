@@ -2,7 +2,7 @@
 <v-app>
 
   <!-- Decalring Visitors Guest Book properties for rows and columns on data table-->
-  <v-data-table :headers="headers" :items="information" :search="search" sort-by="name" class="elevation-1">
+  <v-data-table :headers="headers" :items="information" :search="search" sort-by="timeIn" class="elevation-1">
 
     <template v-slot:top>
       <v-toolbar flat color="white">
@@ -60,7 +60,7 @@
 
     <!-- Table actions (edit and delete) -->
     <template v-slot:item.action="{ item }">
-      <v-icon small class="mr-2" @click="editVisitor(visitor)" color="green">
+      <v-icon small class="mr-2" @click="editVisitor(item)" color="green">
         mdi-account-edit
       </v-icon>
       <v-icon small @click="deleteVisitor(visitor)" color="red">
