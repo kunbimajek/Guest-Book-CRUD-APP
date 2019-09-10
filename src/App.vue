@@ -27,22 +27,22 @@
               <v-container>
                 <v-row>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.name" label="Name"></v-text-field>
+                    <v-text-field v-model="editedVisitor.name" label="Name"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.number" label="Phone Number"></v-text-field>
+                    <v-text-field v-model="editedVisitor.number" label="Phone Number"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.address" label="Address"></v-text-field>
+                    <v-text-field v-model="editedVisitor.address" label="Address"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.purposeOfVisit" label="Purpose of Visit"></v-text-field>
+                    <v-text-field v-model="editedVisitor.purposeOfVisit" label="Purpose of Visit"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.timeIn" label="Time In"></v-text-field>
+                    <v-text-field v-model="editedVisitor.timeIn" label="Time In"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.timeOut" label="Time Out"></v-text-field>
+                    <v-text-field v-model="editedVisitor.timeOut" label="Time Out"></v-text-field>
                   </v-col>
                 </v-row>
               </v-container>
@@ -60,10 +60,10 @@
 
     <!-- Table actions (edit and delete) -->
     <template v-slot:item.action="{ item }">
-      <v-icon small class="mr-2" @click="editItem(item)" color="green">
+      <v-icon small class="mr-2" @click="editVisitor(visitor)" color="green">
         mdi-account-edit
       </v-icon>
-      <v-icon small @click="deleteItem(item)" color="red">
+      <v-icon small @click="deleteVisitor(visitor)" color="red">
         mdi-delete
       </v-icon>
     </template>
@@ -103,7 +103,7 @@ export default {
       ],
       information: [],
       editedIndex: -1,
-      editedItem: {
+      editedVisitor: {
         name: '',
         number: '',
         address: '',
@@ -111,7 +111,7 @@ export default {
         timeIn: '',
         timeOut: '',
       },
-      defaultItem: {
+      defaultVisitor: {
         name: '',
         number: '',
         address: '',
@@ -168,30 +168,30 @@ export default {
         ]
       },
       //edit visitor
-      editItem (item) {
-        this.editedIndex = this.information.indexOf(item)
-        this.editedItem = Object.assign({}, item)
+      editVisitor (visitor) {
+        this.editedIndex = this.information.indexOf(visitor)
+        this.editedVisitor = Object.assign({}, visitor)
         this.dialog = true
       },
       //delete visitor
-      deleteItem (item) {
-        const index = this.information.indexOf(item)
+      deleteVisitor (visitor) {
+        const index = this.information.indexOf(visitor)
         confirm('Are you sure you want to delete this Visitor?') && this.information.splice(index, 1)
       },
       //close modal
       close () {
         this.dialog = false
         setTimeout(() => {
-          this.editedItem = Object.assign({}, this.defaultItem)
+          this.editedVisitor= Object.assign({}, this.defaultVisitor)
           this.editedIndex = -1
         }, 300)
       },
       //save visitor information
       save () {
         if (this.editedIndex > -1) {
-          Object.assign(this.information[this.editedIndex], this.editedItem)
+          Object.assign(this.information[this.editedIndex], this.editedVisitor)
         } else {
-          this.information.push(this.editedItem)
+          this.information.push(this.editedVisitor)
         }
         this.close()
       },
