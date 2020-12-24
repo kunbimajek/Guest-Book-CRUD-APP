@@ -1,4 +1,8 @@
-# visitors-guest-book
+# Guest-Book
+A CRUD guestbook application built with Vue.js and Vuetify
+
+## URL
+https://guest-book-crud.netlify.app/
 
 ## Project setup
 ```
