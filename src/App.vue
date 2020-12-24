@@ -6,7 +6,7 @@
 
     <template v-slot:top>
       <v-toolbar flat color="white">
-        <v-toolbar-title>Visitors Guest Book</v-toolbar-title>
+        <v-toolbar-title>Guest Book</v-toolbar-title>
         <div class="flex-grow-1"></div>
 
          <!-- search table -->
